@@ -1,0 +1,12 @@
+C:\Users\Al\source\repos\ResizeAPI\ResizeAPI\obj\Release\netcoreapp3.1\PubTmp\Out\ResizeAPI.exe
+C:\Users\Al\source\repos\ResizeAPI\ResizeAPI\obj\Release\netcoreapp3.1\PubTmp\Out\appsettings.Development.json
+C:\Users\Al\source\repos\ResizeAPI\ResizeAPI\obj\Release\netcoreapp3.1\PubTmp\Out\appsettings.json
+C:\Users\Al\source\repos\ResizeAPI\ResizeAPI\obj\Release\netcoreapp3.1\PubTmp\Out\ResizeAPI.dll
+C:\Users\Al\source\repos\ResizeAPI\ResizeAPI\obj\Release\netcoreapp3.1\PubTmp\Out\ResizeAPI.deps.json
+C:\Users\Al\source\repos\ResizeAPI\ResizeAPI\obj\Release\netcoreapp3.1\PubTmp\Out\ResizeAPI.runtimeconfig.json
+C:\Users\Al\source\repos\ResizeAPI\ResizeAPI\obj\Release\netcoreapp3.1\PubTmp\Out\ResizeAPI.pdb
+C:\Users\Al\source\repos\ResizeAPI\ResizeAPI\obj\Release\netcoreapp3.1\PubTmp\Out\Microsoft.Win32.SystemEvents.dll
+C:\Users\Al\source\repos\ResizeAPI\ResizeAPI\obj\Release\netcoreapp3.1\PubTmp\Out\System.Drawing.Common.dll
+C:\Users\Al\source\repos\ResizeAPI\ResizeAPI\obj\Release\netcoreapp3.1\PubTmp\Out\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\Al\source\repos\ResizeAPI\ResizeAPI\obj\Release\netcoreapp3.1\PubTmp\Out\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\Al\source\repos\ResizeAPI\ResizeAPI\obj\Release\netcoreapp3.1\PubTmp\Out\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll

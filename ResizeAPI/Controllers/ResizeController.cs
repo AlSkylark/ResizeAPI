@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ResizeAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ResizeAPI.Controllers
 {
@@ -15,43 +16,46 @@ namespace ResizeAPI.Controllers
     [ApiController]
     public class ResizeController : ControllerBase
     {
+        private readonly ILogger _logger;
+        private readonly Secret admin = new Secret();
 
-        public IActionResult Get()
+        //constructor
+        public ResizeController(ILogger<ResizeController> logger)
         {
-            return Ok("API is running...");
+            _logger = logger;
         }
 
+        //get request
+        [HttpGet]
+        public IActionResult Get()
+        {
+            string key = this.HttpContext.Request.Headers["x-auth"];
+            
+            if (key == admin.id) return Ok("API is running...");
+            return Problem("Not Authorized to use the API");
+        }
+
+        //resize request as POST
         [HttpPost]
         public IActionResult Upload([FromForm]ImageToResize ogImg)
         {
-            if (ogImg.File.ContentType != "image/png") return Problem("Problemo");
+            string key = this.HttpContext.Request.Headers["x-auth"];
+            if (key != admin.id) return Problem("You're not Authorized to use the API");
+            if (ogImg.File == null) return Problem("You sent nothing...");
+            if (ogImg.File.ContentType != "image/png") return Problem("Image is not in a valid format.");
 
             ResizedImage image = new ResizedImage(ogImg.FileName, ogImg.File, ogImg.Size);
             image.Resize();
-
-            
-            //for testing purposes
-            //var username = Environment.GetEnvironmentVariable("userprofile");
-            //System.IO.File.WriteAllBytes($@"{username}\desktop\test.png", image.fileBlob);
 
 
 
             //basic log
             float size = (float)Math.Round(ogImg.File.Length / 1048576f, 2);
-            Console.WriteLine(HttpContext.Request.HttpContext.Connection.RemoteIpAddress.ToString() + " requested a resize. File size: " + size + "mb");
+            _logger.LogInformation(HttpContext.Request.HttpContext.Connection.RemoteIpAddress.ToString() + " requested a resize. File size: " + size + "mb");
             
             return Ok(image);
             
         }
-        private static async Task<string> ImageToString(IFormFile file)
-        {
-            var result = new StringBuilder();
-            using (var reader = new StreamReader(file.OpenReadStream()))
-            while (reader.Peek() >= 0 )
-                {
-                    result.AppendLine(await reader.ReadLineAsync());
-                }
-            return result.ToString();
-        }
+
     }
 }
